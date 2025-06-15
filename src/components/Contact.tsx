@@ -33,16 +33,21 @@ const Contact: React.FC = () => {
       }
     );
 
-    const result = await response.text();
-    console.log("Success:", result);
+    const result = await response.json();
 
-    alert("Message sent successfully!");
-    setFormData({ name: '', email: '', subject: '', message: '' });
+    if (result.status === "success") {
+      alert("Message sent successfully!");
+      setFormData({ name: '', email: '', subject: '', message: '' });
+    } else {
+      throw new Error(result.error || "Unknown error");
+    }
+
   } catch (error) {
     console.error("Error submitting form:", error);
     alert("There was an error sending your message.");
   }
 };
+
 
 
   const contactInfo = [
