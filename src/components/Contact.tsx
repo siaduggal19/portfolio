@@ -33,7 +33,9 @@ const Contact: React.FC = () => {
       }
     );
 
-    const result = await response.json();
+    const text = await response.text();
+    const result = JSON.parse(text);
+
 
     if (result.status === "success") {
       alert("Message sent successfully!");
