@@ -19,15 +19,17 @@ const Contact: React.FC = () => {
  const handleSubmit = async (e: React.FormEvent) => {
   e.preventDefault();
 
+  const formBody = new URLSearchParams(formData).toString();
+
   try {
     const response = await fetch(
       "https://script.google.com/macros/s/AKfycbzWDOFrSCvpS9N2UIz618rdkUWPpjwEYGKH2X5zZF0_SPjyiL270ahuQbNjsxYu3iGRFw/exec",
       {
         method: "POST",
         headers: {
-          "Content-Type": "application/json",
+          "Content-Type": "application/x-www-form-urlencoded",
         },
-        body: JSON.stringify(formData),
+        body: formBody,
       }
     );
 
@@ -36,12 +38,12 @@ const Contact: React.FC = () => {
 
     alert("Message sent successfully!");
     setFormData({ name: '', email: '', subject: '', message: '' });
-
   } catch (error) {
     console.error("Error submitting form:", error);
     alert("There was an error sending your message.");
   }
 };
+
 
   const contactInfo = [
     {
