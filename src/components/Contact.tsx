@@ -34,6 +34,9 @@ const Contact: React.FC = () => {
     );
 
     const text = await response.text();
+    console.log("RESPONSE STATUS:", response.status);
+    console.log("RESPONSE TEXT:", text);
+
     const result = JSON.parse(text);
 
 

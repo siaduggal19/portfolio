@@ -161,7 +161,7 @@ const Projects: React.FC = () => {
         {/* Volunteering Section */}
         <div className="mt-20">
           <h2 className="text-3xl font-bold text-gray-900 mb-6 text-center">Volunteering Experience</h2>
-          <div className="grid grid-cols-3 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
            {volunteering.map((exp, i) => {
               const images = exp.images || [exp.image];
               const currentImage = images[volImageIndices[i] % images.length];
